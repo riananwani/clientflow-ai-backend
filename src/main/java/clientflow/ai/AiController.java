@@ -1,10 +1,14 @@
 package clientflow.ai;
 
+import clientflow.ai.dto.ExtractTasksRequest;
+import clientflow.ai.dto.ExtractTasksResponse;
 import clientflow.project.Project;
 import clientflow.project.ProjectRepository;
 import clientflow.task.Task;
 import clientflow.task.TaskRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +23,7 @@ public class AiController {
     private final OpenAiClient openAiClient;
     private final ProjectRepository projectRepository;
     private final TaskRepository taskRepository;
+    private final AiTaskService aiTaskService;
 
     @GetMapping("/summarize")
     public ResponseEntity<Map<String, String>> summarizeProject(
@@ -58,5 +63,14 @@ public class AiController {
                 "projectName", project.getName(),
                 "summary", summary
         ));
+    }
+
+    @PostMapping("/extract-tasks")
+    public ResponseEntity<ExtractTasksResponse> extractTasks(
+            @PathVariable Long projectId,
+            @Valid @RequestBody ExtractTasksRequest request) {
+        request.setProjectId(projectId);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(aiTaskService.extractAndCreateTasks(request));
     }
 }

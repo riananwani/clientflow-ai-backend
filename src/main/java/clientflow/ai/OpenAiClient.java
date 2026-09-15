@@ -24,7 +24,7 @@ public class OpenAiClient {
     public String chat(String systemPrompt, String userMessage) {
         try {
             String body = objectMapper.writeValueAsString(Map.of(
-                    "model", "gpt-4o-mini",
+                    "model", "openai/gpt-oss-20b",
                     "messages", List.of(
                             Map.of("role", "system", "content", systemPrompt),
                             Map.of("role", "user", "content", userMessage)
@@ -33,7 +33,7 @@ public class OpenAiClient {
             ));
 
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.openai.com/v1/chat/completions"))
+                    .uri(URI.create("https://api.groq.com/openai/v1/chat/completions"))
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + apiKey)
                     .POST(HttpRequest.BodyPublishers.ofString(body))

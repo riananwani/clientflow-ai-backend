@@ -1,5 +1,7 @@
 package clientflow.ai;
 
+import clientflow.ai.dto.AskQuestionRequest;
+import clientflow.ai.dto.AskQuestionResponse;
 import clientflow.ai.dto.ExtractTasksRequest;
 import clientflow.ai.dto.ExtractTasksResponse;
 import clientflow.project.Project;
@@ -24,6 +26,7 @@ public class AiController {
     private final ProjectRepository projectRepository;
     private final TaskRepository taskRepository;
     private final AiTaskService aiTaskService;
+    private final RagService ragService;
 
     @GetMapping("/summarize")
     public ResponseEntity<Map<String, String>> summarizeProject(
@@ -72,5 +75,12 @@ public class AiController {
         request.setProjectId(projectId);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(aiTaskService.extractAndCreateTasks(request));
+    }
+
+    @PostMapping("/ask")
+    public ResponseEntity<AskQuestionResponse> askQuestion(
+            @PathVariable Long projectId,
+            @Valid @RequestBody AskQuestionRequest request) {
+        return ResponseEntity.ok(ragService.askQuestion(projectId, request));
     }
 }

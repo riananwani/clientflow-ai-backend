@@ -225,8 +225,8 @@ src/main/java/clientflow/
 - [x] Project document Q&A
 - [x] Swagger / OpenAPI documentation
 - [x] Docker + docker-compose setup
-- [ ] pgvector embeddings + true RAG retrieval
-- [ ] Project membership authorization enforcement
-- [ ] GitHub Actions CI pipeline
-- [ ] Rate limiting on AI endpoints
-- [ ] Live deployment
+- [x] pgvector embeddings + true RAG retrieval
+- [x] Project membership authorization enforcement
+- [x] GitHub Actions CI pipeline
+- [x] Rate limiting on AI endpoints
+- [x] Live deployment

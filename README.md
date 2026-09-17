@@ -6,6 +6,15 @@ Built with **Java 21**, **Spring Boot 4**, **PostgreSQL**, **Spring Security**, 
 
 ---
 
+## 🌐 Live Demo
+
+- **API Base URL:** https://clientflow-ai-backend.onrender.com
+- **Swagger UI:** https://clientflow-ai-backend.onrender.com/swagger-ui/index.html
+
+> Note: Free tier — first request may take 50 seconds to wake up.
+
+---
+
 ## Features
 
 - **JWT Authentication** — Secure login and registration with role-based access (ADMIN, DEVELOPER, CLIENT)

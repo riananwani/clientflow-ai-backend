@@ -8,6 +8,7 @@ import clientflow.project.Project;
 import clientflow.project.ProjectRepository;
 import clientflow.task.Task;
 import clientflow.task.TaskRepository;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@Tag(name = "AI Features", description = "AI summarization, task extraction and document Q&A")
 @RestController
 @RequestMapping("/api/v1/projects/{projectId}/ai")
 @RequiredArgsConstructor

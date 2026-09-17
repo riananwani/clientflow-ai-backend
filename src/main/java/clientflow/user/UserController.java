@@ -3,6 +3,7 @@ package clientflow.user;
 import clientflow.user.dto.RegisterRequest;
 import clientflow.user.dto.UpdateUserRequest;
 import clientflow.user.dto.UserResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@Tag(name = "Users", description = "User management endpoints")
 @RestController
 @RequestMapping("/api/v1/users")
 @RequiredArgsConstructor

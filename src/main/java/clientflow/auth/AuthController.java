@@ -3,11 +3,13 @@ package clientflow.auth;
 import clientflow.auth.dto.AuthResponse;
 import clientflow.auth.dto.LoginRequest;
 import clientflow.user.dto.RegisterRequest;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@Tag(name = "Authentication", description = "Register and login endpoints")
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
